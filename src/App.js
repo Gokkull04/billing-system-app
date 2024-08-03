@@ -1,11 +1,21 @@
+// Import React and necessary components
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import BillingPage from './pages/BillingPage';
+import AddItemPage from './pages/AddItemPage';
 
-
-function App() {
+// Main App component
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hii</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/billing" element={<BillingPage />} />
+        <Route path="/add-item" element={<AddItemPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
