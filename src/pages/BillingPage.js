@@ -1,11 +1,11 @@
-// Import React and necessary components
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// Functional component for the Billing page
 const BillingPage = () => {
   const [noOfItems, setNoOfItems] = useState(1);
   const [productCodes, setProductCodes] = useState(['']);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleNoOfItemsChange = (e) => {
     const value = e.target.value;
@@ -31,6 +31,14 @@ const BillingPage = () => {
     setProductCodes(updatedCodes);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // You can perform validation and other logic here
+
+    // Navigate to the Invoice page
+    navigate('/invoice');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
       <header className="w-full py-4 bg-white shadow">
@@ -39,7 +47,7 @@ const BillingPage = () => {
 
       <div className="flex flex-col items-center justify-center flex-grow">
         <div className="bg-white p-6 rounded-lg shadow-md w-80 mt-10">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Name of the Customer
