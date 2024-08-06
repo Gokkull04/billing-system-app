@@ -1,73 +1,100 @@
 import React from 'react';
 
-const Invoice = () => {
+const InvoicePage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <header className="w-full py-4 bg-white shadow-md flex justify-between items-center px-6">
-        <h1 className="text-2xl font-semibold">Invoice</h1>
-        <h2 className="text-xl font-bold text-red-600">LetzGrabIT</h2>
-      </header>
+    <div className="bg-gray-100 flex justify-center py-1">
+      <div className="bg-g p-6 rounded-lg shadow-md w-full max-w-full" style={{ width: '210mm', height: '297mm' }}>
+        <header className="w-full py-4 text-white shadow-md flex justify-between items-center px-6 bg-gray-600">
+          <h1 className="text-6xl font-semibold">Invoice</h1>
+          <h2 className="text-xl font-bold text-red-600">LetzGrabIT</h2>
+        </header>
 
-      <main className="flex-grow flex flex-col items-center p-6">
-        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl mt-10">
-          <h2 className="text-xl font-bold mb-4">Invoice Details</h2>
-          <div className="flex flex-col space-y-2">
-            <div className="flex justify-between">
-              <span className="font-medium">Customer Name:</span>
-              <span>John Doe</span>
+        <main className="p-6 mt-10">
+          {/* Bill To and Payable To Section */}
+          <div className="flex justify-between mb-6">
+          <div className="flex justify-between mb-6">
+            <div className='mr-4'>
+              <h3 className="font-bold">Bill To:</h3>
+              <p>John Doe</p>
+              <p>123 Main Street</p>
+              <p>City, Country</p>
             </div>
-            <div className="flex justify-between">
-              <span className="font-medium">Address:</span>
-              <span>123 Main Street, City, Country</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-medium">Date:</span>
-              <span>August 6, 2024</span>
+            <div>
+              <h3 className="font-bold">Payable To:</h3>
+              <p>LetzGrabIT</p>
+              <p>456 Another Street</p>
+              <p>City, Country</p>
             </div>
           </div>
 
-          <h3 className="text-lg font-bold mt-6 mb-2">Items</h3>
-          <div className="border rounded-md overflow-hidden">
-            <table className="min-w-full bg-white">
-              <thead>
-                <tr>
-                  <th className="py-2 px-4 border-b">Product Code</th>
-                  <th className="py-2 px-4 border-b">Product Name</th>
-                  <th className="py-2 px-4 border-b">Quantity</th>
-                  <th className="py-2 px-4 border-b">Price</th>
-                  <th className="py-2 px-4 border-b">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="py-2 px-4 border-b">001</td>
-                  <td className="py-2 px-4 border-b">Product A</td>
-                  <td className="py-2 px-4 border-b">2</td>
-                  <td className="py-2 px-4 border-b">$10</td>
-                  <td className="py-2 px-4 border-b">$20</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-4 border-b">002</td>
-                  <td className="py-2 px-4 border-b">Product B</td>
-                  <td className="py-2 px-4 border-b">1</td>
-                  <td className="py-2 px-4 border-b">$15</td>
-                  <td className="py-2 px-4 border-b">$15</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="flex justify-end mt-4">
-            <div className="text-right">
-              <div className="font-medium">Subtotal: $35</div>
-              <div className="font-medium">Tax: $3.50</div>
-              <div className="font-bold">Total: $38.50</div>
+          {/* Bill No and Date */}
+          <div>
+            <div>
+              <h3 className="font-bold">Bill No:</h3>
+              <p>INV12345</p>
+            </div>
+            <div>
+              <h3 className="font-bold">Date:</h3>
+              <p>August 6, 2024</p>
             </div>
           </div>
-        </div>
-      </main>
+          </div>
+
+          {/* Description, Price, Qty, Amount */}
+          <div className="mb-4">
+            <div className="flex justify-between font-bold bg-gray-600 text-white px-2 py-2">
+              <span>Description</span>
+              <span>Price</span>
+              <span>Qty</span>
+              <span>Amount</span>
+            </div>
+            <div className="flex justify-between mt-2">
+              <span>Product A</span>
+              <span>$10</span>
+              <span>2</span>
+              <span>$20</span>
+            </div>
+            <div className="flex justify-between mt-2">
+              <span>Product B</span>
+              <span>$15</span>
+              <span>1</span>
+              <span>$15</span>
+            </div>
+          </div>
+
+          {/* Subtotal, Shipping, Total */}
+          <div className="flex justify-end mb-6 mt-36 text-white">
+            <div className="text-right bg-gray-600 px-10 py-5">
+              <div className="font-medium pb-3">
+                <span className='mr-10'>SUBTOTAL</span>
+                <span className='ml-10'> $35</span>
+              </div>
+              <div className="font-medium pb-3">
+              <span className='mr-10'>SHIPPING</span>
+              <span className='ml-10'>FREE</span>
+              </div>
+              <div className="font-bold">
+              <span className='mr-10'>TOTAL</span>
+              <span className='ml-10 text-2xl'> $35</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Thank You */}
+          <div className="text-center font-bold mb-6 mt-24 text-5xl">
+            Thank You!
+          </div>
+
+          {/* Website, Gmail, Instagram */}
+          <div className="text-left mt-16">
+            <p>Website: <a href="https://www.letzgrabit.com" className="text-blue-500">www.letzgrabit.com</a></p>
+            <p>Email: <a href="mailto:contact@letzgrabit.com" className="text-blue-500">contact@letzgrabit.com</a></p>
+            <p>Instagram: <a href="https://instagram.com/letzgrabit" className="text-blue-500">@letzgrabit</a></p>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
-export default Invoice;
+export default InvoicePage;
