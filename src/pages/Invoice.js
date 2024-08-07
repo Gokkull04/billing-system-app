@@ -1,22 +1,25 @@
 import React from 'react';
 import logo from '../images/bs logo.jpeg';
-import backgroundImage from '../images/bs bg.jpeg'; // Ensure the correct path
+import Image from '../images/bs bg.jpeg'; // Ensure the correct path
 
 const Invoice = () => {
   return (
-    <div className="flex justify-center py-1" style={{ background: '#f3f4f6' }}>
+    <div className="flex justify-center py-1 bg-gray-200">
       <div
         className="relative bg-white p-6 rounded-lg shadow-md w-full max-w-full overflow-hidden"
         style={{
           width: '210mm',
           height: '297mm',
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-white opacity-90" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${Image})`,
+            zIndex: -1,
+          }}
+        />
+        <div className="absolute inset-0 bg-white opacity-90" style={{ zIndex: -1 }}></div>
 
         <header className="relative z-10 w-full text-white shadow-md flex justify-between items-center px-6 bg-black">
           <h1 className="text-6xl font-semibold">Invoice</h1>
