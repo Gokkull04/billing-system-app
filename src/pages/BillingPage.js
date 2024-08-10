@@ -1,3 +1,4 @@
+// BillingPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -5,6 +6,8 @@ const BillingPage = () => {
   const [noOfItems, setNoOfItems] = useState(1);
   const [productCodes, setProductCodes] = useState(['']);
   const [errors, setErrors] = useState({});
+  const [customerName, setCustomerName] = useState('');
+  const [address, setAddress] = useState('');
   const navigate = useNavigate();
 
   const handleNoOfItemsChange = (e) => {
@@ -35,8 +38,8 @@ const BillingPage = () => {
     e.preventDefault();
     // You can perform validation and other logic here
 
-    // Navigate to the Invoice page
-    navigate('/invoice');
+    // Navigate to the Invoice page with customerName and address
+    navigate('/invoice', { state: { customerName, address } });
   };
 
   return (
@@ -54,8 +57,11 @@ const BillingPage = () => {
               </label>
               <input
                 type="text"
+                value={customerName}
+                onChange={(e) => setCustomerName(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter name"
+                required
               />
             </div>
 
@@ -65,8 +71,11 @@ const BillingPage = () => {
               </label>
               <input
                 type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter address"
+                required
               />
             </div>
 
@@ -106,7 +115,7 @@ const BillingPage = () => {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
             >
               Submit
             </button>
