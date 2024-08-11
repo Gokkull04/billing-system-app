@@ -7,6 +7,9 @@ const Invoice = () => {
   const location = useLocation();
   const { customerName, address } = location.state || {};
 
+  // Split the address by new line characters or carriage returns into an array of lines
+  const addressLines = address ? address.split(/\r?\n/) : [];
+
   return (
     <div className="flex justify-center py-1 bg-gray-200">
       <div
@@ -31,7 +34,14 @@ const Invoice = () => {
               <div className="mr-4">
                 <h3 className="font-bold text-gray-700">Bill To:</h3>
                 <p>{customerName || 'N/A'}</p>
-                <p>{address || 'N/A'}</p>
+                {/* Render each line of the address as a separate <p> tag */}
+                {addressLines.length > 0 ? (
+                  addressLines.map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))
+                ) : (
+                  <p>N/A</p>
+                )}
               </div>
               <div>
                 <h3 className="font-bold text-gray-700">Payable To:</h3>
